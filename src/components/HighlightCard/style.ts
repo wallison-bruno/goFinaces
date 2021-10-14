@@ -34,13 +34,13 @@ export const Icon = styled(Feather) <TypeCard>`
     font-size: ${RFValue(40)}px;
 
     ${(props) => props.type === 'up' && css`
-    color:${({ theme }) => theme.colors.sucess};
+        color:${({ theme }) => theme.colors.sucess};
     `}
      ${(props) => props.type === 'total' && css`
-    color:${({ theme }) => theme.colors.shape};
+        color:${({ theme }) => theme.colors.shape};
     `}
      ${(props) => props.type === 'donw' && css`
-    color:${({ theme }) => theme.colors.anttencion};
+        color:${({ theme }) => theme.colors.anttencion};
     `}
 `;
 

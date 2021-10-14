@@ -45,4 +45,3 @@ export function HighlightCard({
             </Footer>
         </Container>)
 }
-//

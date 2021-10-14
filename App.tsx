@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
 
 import { Dashboard } from "./src/screens/Dashboard";
+import { Register } from "./src/screens/Register";
 import AppLoading from 'expo-app-loading';
 import {
   useFonts, Poppins_400Regular,
@@ -24,7 +25,7 @@ export default function App() {
   } else {
     return (
       <ThemeProvider theme={theme}>
-        <Dashboard />
+        <Register />
       </ThemeProvider>
     )
   }
