@@ -11,6 +11,7 @@ import { Input } from "../../components/Form/Input";
 import { Button } from "../../components/Form/Button";
 import { View } from "react-native";
 import { ButtonTransaction } from "../../components/Form/ButtonTransaction";
+import { SelectButton } from "../../components/Form/SelectButton";
 
 
 export function Register() {
@@ -45,6 +46,9 @@ export function Register() {
                             isSelcted={transactionType === 'down'}
                         />
                     </ButtonsTransactions>
+
+                    <SelectButton title={'Categoria...'} />
+
                 </View>
                 <Button title="Enviar" />
             </Form>

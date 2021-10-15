@@ -12,6 +12,7 @@ interface ContainerProps {
 }
 
 export const Container = styled.TouchableOpacity<ContainerProps>`
+    align-items: center;
     border-width: 1.5px;
     border-style: solid;
     border-color: ${({ theme }) => theme.colors.text};
