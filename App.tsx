@@ -11,6 +11,7 @@ import {
   Poppins_500Medium,
   Poppins_700Bold
 } from "@expo-google-fonts/poppins";
+import { CategorySelect } from "./src/screens/CategorySelect";
 
 export default function App() {
 
