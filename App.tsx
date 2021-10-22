@@ -1,18 +1,25 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 
+//Theme
+import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
 
+//Screens
 import { Dashboard } from "./src/screens/Dashboard";
 import { Register } from "./src/screens/Register";
+
+//Loading for fonts
 import AppLoading from 'expo-app-loading';
+
+//Fonts
 import {
   useFonts, Poppins_400Regular,
   Poppins_500Medium,
   Poppins_700Bold
 } from "@expo-google-fonts/poppins";
-import { CategorySelect } from "./src/screens/CategorySelect";
 
+
+//Start App
 export default function App() {
 
   let [fontsLoaded] = useFonts({
