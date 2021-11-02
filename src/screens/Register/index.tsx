@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import {
     Container,
     Header,
@@ -7,15 +8,19 @@ import {
     ButtonsTransactions,
 } from "./styles";
 
-import { Input } from "../../components/Form/Input";
 import { Button } from "../../components/Form/Button";
 import { Modal, View } from "react-native";
 import { ButtonTransaction } from "../../components/Form/ButtonTransaction";
 import { SelectButton } from "../../components/Form/SelectButton";
 import { CategorySelect } from "../CategorySelect";
-
+import { InputControle } from "../../components/Form/InputControler/inde";
 
 export function Register() {
+
+    interface Form {
+        name: string,
+        amount: string,
+    }
 
     const [openModal, setOpenModal] = useState(false)
     const [transactionType, setTransacationType] = useState('')
@@ -25,6 +30,10 @@ export function Register() {
         name: 'Categoria',
     })
 
+    const {
+        control,
+        handleSubmit,
+    } = useForm();
 
     function handleTransactionsTaypeSelect(type: 'up' | 'down') {
         setTransacationType(type);
@@ -38,6 +47,16 @@ export function Register() {
         setOpenModal(false)
     }
 
+    function handleResgiter(form: Form) {
+        /* const data = {
+            name: form.name,
+            amount: form.amount,
+            category: category.key,
+            transaction: transactionType,
+        } */
+        console.log(form)
+    }
+
     return (
         <Container>
             <Header >
@@ -46,8 +65,8 @@ export function Register() {
 
             <Form>
                 <View>
-                    <Input placeholder="Nome" />
-                    <Input placeholder="Preço" />
+                    <InputControle placeholder="Nome" name="name" control={control} />
+                    <InputControle placeholder="Preço" name="amount" control={control} />
                     <ButtonsTransactions>
                         <ButtonTransaction
                             title={'Income'}
@@ -75,7 +94,9 @@ export function Register() {
                         />
                     </Modal>
                 </View>
-                <Button title="Enviar" />
+                <Button
+                    title="Enviar"
+                    onPress={handleSubmit(handleResgiter)} />
             </Form>
         </Container>
     )
