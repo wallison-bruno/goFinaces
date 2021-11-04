@@ -7,20 +7,25 @@ import { Container } from "./styled";
 interface Props extends TextInputProps {
     name: string,
     control: Control
+    defaltValue?: string,
 }
 
-export function InputControle({ name, control, ...rest }: Props) {
+export function InputControle({ name, control, defaltValue, ...rest }: Props) {
     return (
         <Container>
             <Controller
-                name={name}
+
                 control={control}
-                render={({ field: { onChange, value } }) => (
+                render={({ field: { onChange, onBlur, value } }) => (
                     <Input
-                        onChange={onChange}
+                        onBlur={onBlur}
+                        onChangeText={onChange}
                         value={value}
-                        {...rest} />
+                        {...rest}
+                    />
                 )}
+                name={name}
+                defaultValue={defaltValue}
             />
         </Container>
     )

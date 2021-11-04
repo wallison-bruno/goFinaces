@@ -47,14 +47,15 @@ export function Register() {
         setOpenModal(false)
     }
 
+
     function handleResgiter(form: Form) {
-        /* const data = {
+        const data = {
             name: form.name,
             amount: form.amount,
             category: category.key,
             transaction: transactionType,
-        } */
-        console.log(form)
+        }
+        console.log(data)
     }
 
     return (
@@ -65,8 +66,8 @@ export function Register() {
 
             <Form>
                 <View>
-                    <InputControle placeholder="Nome" name="name" control={control} />
-                    <InputControle placeholder="Preço" name="amount" control={control} />
+                    <InputControle placeholder="Nome" name="name" control={control} defaltValue={''} />
+                    <InputControle placeholder="Preço" name="amount" control={control} defaltValue={''} />
                     <ButtonsTransactions>
                         <ButtonTransaction
                             title={'Income'}

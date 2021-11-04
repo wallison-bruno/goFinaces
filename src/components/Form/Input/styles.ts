@@ -9,5 +9,5 @@ export const Container = styled.TextInput`
     font-size:  ${RFValue(14)}px;
     border-radius: 5px;
     padding: 18px;
-    margin-bottom: 8;
+    margin-bottom:  ${RFValue(8)}px;
 `;
