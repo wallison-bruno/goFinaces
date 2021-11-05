@@ -33,7 +33,7 @@ export default function App() {
   } else {
     return (
       <ThemeProvider theme={theme}>
-        <Register />
+        <Dashboard />
       </ThemeProvider>
     )
   }
