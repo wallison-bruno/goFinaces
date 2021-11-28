@@ -1,1 +1,1 @@
-# goFinaces
+# goFinaces (React Native)
