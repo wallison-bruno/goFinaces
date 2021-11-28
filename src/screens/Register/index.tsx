@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
     Container,
@@ -15,16 +15,24 @@ import { SelectButton } from "../../components/Form/SelectButton";
 import { CategorySelect } from "../CategorySelect";
 import { InputControle } from "../../components/Form/InputControler/inde";
 
+import { useNavigation } from "@react-navigation/native";
+
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import uuid from 'react-native-uuid';
+
+
+const storegeKey = '@gofinacens:Transactons'
 
 export function Register() {
-
     interface Form {
         name: string,
         amount: string,
     }
+
+    const navigation = useNavigation();
 
     const [openModal, setOpenModal] = useState(false)
     const [transactionType, setTransacationType] = useState('')
@@ -48,6 +56,7 @@ export function Register() {
     const {
         control,
         handleSubmit,
+        reset,
         formState: { errors }
     } = useForm({
         resolver: yupResolver(schema)
@@ -65,7 +74,7 @@ export function Register() {
         setOpenModal(false)
     }
 
-    function handleResgiter(form: Form) {
+    async function handleResgiter(form: Form) {
 
         if (!transactionType) {
             return Alert.alert('Selecione o tipo da transação.')
@@ -73,13 +82,39 @@ export function Register() {
         if (category.key === 'category') {
             return Alert.alert('Selecione a categoria.')
         }
-        const data = {
+        const newTransiction = {
+            id: uuid.v4(),
+            date: new Date(),
             name: form.name,
             amount: form.amount,
             category: category.key,
-            transaction: transactionType,
+            type: transactionType,
         }
-        console.log(data)
+
+        try {
+            const allTransacations = await AsyncStorage.getItem(storegeKey)
+            const currentTransacations = allTransacations ? JSON.parse(allTransacations) : []
+
+            const transactions = [
+                ...currentTransacations,
+                newTransiction
+            ]
+
+            await AsyncStorage.setItem(storegeKey, JSON.stringify(transactions))
+
+            reset();
+            setTransacationType('');
+            setCategory({
+                key: 'category',
+                name: 'Categoria',
+            })
+            // Redirecionando para screen de Dashborad.
+            navigation.navigate("Listagem");
+
+        } catch (erro) {
+            console.log(erro);
+            Alert.alert('Não foi possível cadastrar')
+        }
     }
 
     return (

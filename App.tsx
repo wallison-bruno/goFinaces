@@ -4,10 +4,6 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
 
-//Screens
-import { Dashboard } from "./src/screens/Dashboard";
-import { Register } from "./src/screens/Register";
-
 //Loading for fonts
 import AppLoading from 'expo-app-loading';
 
@@ -18,6 +14,7 @@ import {
   Poppins_700Bold
 } from "@expo-google-fonts/poppins";
 
+import Routs from "./src/routes/app.routes";
 
 //Start App
 export default function App() {
@@ -33,7 +30,7 @@ export default function App() {
   } else {
     return (
       <ThemeProvider theme={theme}>
-        <Dashboard />
+        <Routs />
       </ThemeProvider>
     )
   }

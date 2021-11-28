@@ -47,7 +47,7 @@ export const Icon = styled(Feather) <TypeCard>`
 export const Amount = styled.Text<TypeCard>`
     font-family: ${({ theme }) => theme.fonts.midium};
     font-size:  ${RFValue(32)}px;
-    margin-top: ${RFValue(38)}px;
+    margin-top: ${RFValue(34)}px;
     ${(props) => props.type === 'total' ? css` 
         color:${({ theme }) => theme.colors.shape};` : css`
         color:${({ theme }) => theme.colors.text_dark};

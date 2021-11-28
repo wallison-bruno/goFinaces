@@ -4,6 +4,8 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Feather } from "@expo/vector-icons";
 import { DatalistProps } from ".";
 
+import { BorderlessButton } from "react-native-gesture-handler";
+
 export const Container = styled.View`
     flex: 1;
     background-color: ${({ theme }) => theme.colors.backgroud};
@@ -51,6 +53,11 @@ export const UserName = styled.Text`
     font-family: ${({ theme }) => theme.fonts.bold};
 `;
 
+
+export const LogoutButton = styled(BorderlessButton)`
+
+`;
+
 export const Icon = styled(Feather)`
     color: ${({ theme }) => theme.colors.secundary} ;
     font-size: ${RFValue(24)}px;
@@ -86,3 +93,8 @@ export const Title = styled.Text`
     margin-bottom: 16px;
 `;
 
+export const ContainerLoad = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;

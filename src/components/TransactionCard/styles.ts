@@ -3,7 +3,7 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { Feather } from "@expo/vector-icons";
 
 interface TransactionProps {
-    type: 'positive' | 'negative'
+    type: 'up' | 'down'
 }
 
 export const Container = styled.View`
@@ -23,7 +23,7 @@ export const Amount = styled.Text<TransactionProps>`
     margin-top: 2px ;
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme, type }) =>
-        type === 'positive' ? theme.colors.sucess : theme.colors.anttencion}
+        type === 'up' ? theme.colors.sucess : theme.colors.anttencion}
 
 `;
 
@@ -31,7 +31,7 @@ export const Footer = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 19px;
+    margin-top: 10px;
 `;
 
 export const Category = styled.View`
@@ -48,8 +48,11 @@ export const CategoryName = styled.Text`
     margin-left: 17PX;
     font-size: ${RFValue(14)}px;
     color:${({ theme }) => theme.colors.text};
+    font-family: ${({ theme }) => theme.fonts.regular};
 `;
 
 export const Date = styled.Text`
     color:${({ theme }) => theme.colors.text};
+    font-family: ${({ theme }) => theme.fonts.regular};
+
 `;
