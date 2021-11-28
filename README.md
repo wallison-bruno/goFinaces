@@ -1,1 +1,2 @@
-# goFinaces (React Native)
+# goFinaces
+- Freme work => React Native
