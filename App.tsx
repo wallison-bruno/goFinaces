@@ -9,12 +9,14 @@ import AppLoading from 'expo-app-loading';
 
 //Fonts
 import {
-  useFonts, Poppins_400Regular,
+  useFonts,
+  Poppins_400Regular,
   Poppins_500Medium,
   Poppins_700Bold
 } from "@expo-google-fonts/poppins";
 
 import Routs from "./src/routes/app.routes";
+import { Signin } from "./src/screens/Signin";
 
 //Start App
 export default function App() {
@@ -30,7 +32,8 @@ export default function App() {
   } else {
     return (
       <ThemeProvider theme={theme}>
-        <Routs />
+        {/*   <Routs /> */}
+        <Signin />
       </ThemeProvider>
     )
   }
