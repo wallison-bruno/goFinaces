@@ -15,7 +15,22 @@ import {
 import { ButtonSignin } from "../../components/ButtonSignin";
 import { RFValue } from "react-native-responsive-fontsize";
 
+import { useAuth } from "../../hook/auth";
+import { Alert } from "react-native";
+
 export function Signin() {
+
+    const { signinGoogle } = useAuth();
+
+    async function handleSigninGoogle() {
+        try {
+            await signinGoogle();
+        } catch (error) {
+            Alert.alert('Não foi possivel logar')
+            console.log(error);
+        }
+    }
+
     return (
         <Container>
             <InfonElements>
@@ -38,6 +53,9 @@ export function Signin() {
                     <ButtonSignin
                         svg={Google}
                         title="Entrar com conta Google"
+                        onPress={() => {
+                            handleSigninGoogle()
+                        }}
                     />
                     <ButtonSignin
                         svg={Apple}

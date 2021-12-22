@@ -2,6 +2,7 @@ import React from "react";
 
 //Theme
 import { ThemeProvider } from "styled-components";
+import { AuthProvider } from "./src/hook/auth";
 import theme from "./src/global/styles/theme";
 
 //Loading for fonts
@@ -15,8 +16,8 @@ import {
   Poppins_700Bold
 } from "@expo-google-fonts/poppins";
 
-import Routs from "./src/routes/app.routes";
-import { Signin } from "./src/screens/Signin";
+import { Routs } from "./src/routes"
+
 
 //Start App
 export default function App() {
@@ -32,8 +33,10 @@ export default function App() {
   } else {
     return (
       <ThemeProvider theme={theme}>
-        {/*   <Routs /> */}
-        <Signin />
+        <AuthProvider>
+
+          <Routs />
+        </AuthProvider>
       </ThemeProvider>
     )
   }

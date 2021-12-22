@@ -9,7 +9,7 @@ import { TransactionCard, TransactionCardProps } from "../../components/Transact
 import { useFocusEffect } from '@react-navigation/native';
 import { ActivityIndicator } from 'react-native';
 import theme from '../../global/styles/theme';
-
+import { useAuth } from '../../hook/auth';
 import {
   Container,
   Header,
@@ -46,6 +46,8 @@ interface HighlightData {
 
 const storegeKey = '@gofinacens:Transactons'
 export function Dashboard() {
+
+  const { user, handleSigout } = useAuth()
 
   const [data, setData] = useState<DatalistProps[]>([]);
   const [highlightData, setHighlightData] = useState<HighlightData>({} as HighlightData);
@@ -157,13 +159,17 @@ export function Dashboard() {
           <Header>
             <UserWrapper>
               <UserInfo>
-                <Photo source={{ uri: 'https://avatars.githubusercontent.com/u/63119956?v=4' }} />
+                <Photo source={{ uri: user.photo }} />
                 <Greeting>
                   <UserGreeting>Olá,</UserGreeting>
-                  <UserName>Wallyson Bruno</UserName>
+                  <UserName>{user.name}</UserName>
                 </Greeting>
               </UserInfo>
-              <LogoutButton>
+              <LogoutButton
+                onPress={async () => {
+                  handleSigout();
+                }}
+              >
                 <Icon name={"power"} />
               </LogoutButton>
             </UserWrapper>
